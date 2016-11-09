@@ -1,4 +1,26 @@
 $(document).ready(function() {
+	var timerId = 0;
+
+	//Tooltips
+	$('.tooltip-btn').on('mouseenter', function() {
+		clearTimeout(timerId);
+		$(this).next('.tooltip-content').show();
+	});
+
+	$('.tooltip-btn').on('mouseleave', function() {
+		console.log('mouseleave1');
+		timerId = setTimeout(function() {
+			$('.tooltip-content').hide();
+			console.log('mouseleave2');
+		}, 1500);
+	});
+	$('.tooltip-content').on('mouseenter', function() {
+		clearTimeout(timerId);
+		//$(this).show();
+	});
+	$('.tooltip-content').on('mouseleave', function() {
+		$(this).hide();
+	});
 
 	//FAQ dropdown
 	$('.faq__question').on('click', function() {
@@ -60,7 +82,6 @@ $(document).ready(function() {
 				alert('Спасибо! Ваша заявка отправлена!');
 				console.log("jquery-ajax-mail-success");
 				console.log("data:" + data + "; status: " + status);
-				console.log("status: " + status);
 			},
 			error:  function(jqXHR, exception){
 				alert('Возникла ошибка: ' + jqXHR);

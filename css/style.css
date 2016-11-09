@@ -116,6 +116,7 @@ h3 {
 	text-align: center;
 	font-weight: 300;
 	margin-bottom: 6px;
+	position: relative;
 }
 .inputfield__input {
 	width: 100%;
@@ -250,4 +251,53 @@ h3 {
 	line-height: 19px;
 	font-weight: 300;
 	padding: 15px 0 7px;
+}
+.tooltip-btn {
+	display: inline-block;
+	font-weight: 500;
+	text-decoration: underline;
+	vertical-align: super;
+	font-size: 66%;
+	line-height: 0;
+	cursor: pointer;
+	position: relative;
+}
+.tooltip-content {
+	position: absolute;
+	top: -20px;
+	display: none;
+	background: #fff;
+	border: 1px solid #0076C1;
+	padding: 8px;
+	color: #7F7F7F;
+	border-radius: 5px;
+	z-index: 101;
+}
+.tooltip-content a {
+	text-decoration: underline;
+}
+.tooltip-content a:hover {
+	text-decoration: none;
+}
+.tooltip-content:after, .tooltip-content:before {
+	right: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+.tooltip-content:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-right-color: #fff;
+	border-width: 10px;
+	margin-top: -10px;
+}
+.tooltip-content:before {
+	border-color: rgba(0, 118, 193, 0);
+	border-right-color: #0076C1;
+	border-width: 11px;
+	margin-top: -11px;
 }
