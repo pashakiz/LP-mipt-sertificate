@@ -1,8 +1,14 @@
 $(document).ready(function() {
 
-	//Placeholder
-	//Doc: https://github.com/NV/placeholder.js/
-	$("[placeholder]").textPlaceholder();
+	// Показывает имя файла, выбранного инпутом (в области кастомного инпута)
+	$('.inputfile').change(function() {
+		var filePath, filePathArr, file;
+		filePath = $(this).find(".inputfile__input").val();
+		filePathArr = filePath.split("\\");
+		file = filePathArr[filePathArr.length - 1];
+		$(this).find(".inputfile__name").html(file);
+
+	});
 
 	//Аякс отправка форм
 	//Документация: http://api.jquery.com/jquery.ajax/
