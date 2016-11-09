@@ -4,6 +4,7 @@ $(document).ready(function() {
 	//Tooltips
 	$('.tooltip-btn').on('mouseenter', function() {
 		clearTimeout(timerId);
+		$('.tooltip-content').hide();
 		$(this).next('.tooltip-content').show();
 	});
 
