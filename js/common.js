@@ -1,13 +1,28 @@
 $(document).ready(function() {
 
-	// Показывает имя файла, выбранного инпутом (в области кастомного инпута)
+	//FAQ dropdown
+	$('.faq__question').on('click', function() {
+
+		var faqItem = $(this).parent();
+		var faqAns = $(this).parent().find('.faq__answer');
+
+		if ( faqItem.hasClass('expand') ) {
+			faqItem.removeClass('expand');
+			faqAns.slideUp();
+		} else {
+			faqItem.addClass('expand');
+			faqAns.slideDown();
+		}
+
+	});
+
+	// Показывает имя файла, выбранного инпутом type="file"
 	$('.inputfile').change(function() {
 		var filePath, filePathArr, file;
 		filePath = $(this).find(".inputfile__input").val();
 		filePathArr = filePath.split("\\");
 		file = filePathArr[filePathArr.length - 1];
 		$(this).find(".inputfile__name").html(file);
-
 	});
 
 	//Аякс отправка форм
