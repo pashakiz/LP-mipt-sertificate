@@ -2,7 +2,7 @@
 
 $EOL = "\r\n";
 $recepient = "pashakiz@gmail.com";
-$sitename = "SyncroCity";
+$sitename = "Сертификат МФТИ";
 $pagetitle = "Новая заявка с сайта \"$sitename\"";
 
 $name = trim($_POST["name"]);
@@ -12,16 +12,16 @@ $cert = trim($_POST["cert"]);
 $message = "Имя: $name \r\nEmail: $email \r\nСертификат: $cert \r\n";
 
 $headers =	'MIME-Version: 1.0. '."\r\n" .
-	'Content-type: text/plain; charset=utf-8'. "\r\n" .
-	'From: '.$name.' <'.$email.'>' . "\r\n" .
-	'Reply-To: '.$email. "\r\n" .
-	'X-Mailer: PHP/' . phpversion();
+			'Content-type: text/plain; charset=utf-8'. "\r\n" .
+			'From: '.$name.' <'.$email.'>' . "\r\n" .
+			'Reply-To: '.$email. "\r\n" .
+			'X-Mailer: PHP/' . phpversion();
 
-if (!empty($_FILES["file"]["name"])) {
+if (!empty($_FILES["photo"]["name"])) {
 
 	// Закачиваем файл
-	$file_name = $_FILES["file"]["name"];
-	if (copy($_FILES["file"]["tmp_name"], $file_name)) {
+	$file_name = $_FILES["photo"]["name"];
+	if (copy($_FILES["photo"]["tmp_name"], $file_name)) {
 		$photo = $file_name;
 	}
 

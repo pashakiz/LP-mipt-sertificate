@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 	//Аякс отправка форм
 	//Документация: http://api.jquery.com/jquery.ajax/
-	$('#form-sert').submit(function(e) {debugger;
+	$('#form-sert').submit(function(e) {
 
 		var name = $(this).find("input[name='name']").val();
 		var	email = $(this).find("input[name='email']").val();
@@ -46,6 +46,7 @@ $(document).ready(function() {
 				//$('#order_status').html('Спасибо, Ваша заявка отправлена!');
 				console.log("jquery-ajax-mail-success");
 				console.log("data:" + data + "; status: " + status);
+				console.log("status: " + status);
 			},
 			error:  function(jqXHR, exception){
 				alert('Возникла ошибка: ' + jqXHR);
