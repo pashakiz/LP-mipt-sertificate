@@ -46,9 +46,7 @@ $(document).ready(function() {
 			return false;
 		}
 
-		console.log('test1');
 		var formData = new FormData(this);
-		console.log('test2');
 
 		$.ajax({
 			type: "POST",
@@ -59,6 +57,7 @@ $(document).ready(function() {
 			processData: false,
 			success: function(data, status) {
 				//$('#order_status').html('Спасибо, Ваша заявка отправлена!');
+				alert('Спасибо! Ваша заявка отправлена!);
 				console.log("jquery-ajax-mail-success");
 				console.log("data:" + data + "; status: " + status);
 				console.log("status: " + status);

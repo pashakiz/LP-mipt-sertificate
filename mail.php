@@ -54,11 +54,10 @@ if (!empty($_FILES["photo"]["name"])) {
 	$multipart .= "$EOL--$boundary--$EOL";
 
 	if (mail($recepient, $pagetitle, $multipart, $headers)) {
-		echo "Спасибо, Ваша заявка отправлена! <br><a href=\>Вернуться назад</a>";
+		echo "Success! Mail sent.";
 	} else {
-		echo "Ошибка! Ваша заявка не отправлена! <br><a href=\>Вернуться назад</a>";
+		echo "Error! Main didn't send.";
 	}
 }
 
-
-mail($recepient, $pagetitle, $message, $headers);
+//mail($recepient, $pagetitle, $message, $headers);
