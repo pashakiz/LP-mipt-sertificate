@@ -12,12 +12,14 @@ $(document).ready(function() {
 
 	//Аякс отправка форм
 	//Документация: http://api.jquery.com/jquery.ajax/
-	$("form").submit(function() {
+	$('#form-sert').submit(function(e) {debugger;
 
-		var name = $(this).find("input[name='name']").val(),
-			email = $(this).find("input[name='email']").val();
+		var name = $(this).find("input[name='name']").val();
+		var	email = $(this).find("input[name='email']").val();
+		var	cert = $(this).find("input[name='cert']").val();
+		var	photo = $(this).find("input[name='photo']").val();
 
-		if (!name || !email) {
+		if (!name || !email || !cert || !photo) {
 			alert("Заполните поля формы.");
 			return false;
 		}
@@ -29,27 +31,28 @@ $(document).ready(function() {
 			return false;
 		}
 
+		console.log('test1');
+		var formData = new FormData(this);
+		console.log('test2');
+
 		$.ajax({
 			type: "POST",
 			url: "mail.php",
-			data: $(this).serialize(),
-			success: function(response) {
-				//$('#order_status').html(response);
-				$('#order_status').html('Спасибо, Ваша заявка отправлена!');
+			data: formData,
+			cache: false,
+			contentType: false,
+			processData: false,
+			success: function(data, status) {
+				//$('#order_status').html('Спасибо, Ваша заявка отправлена!');
 				console.log("jquery-ajax-mail-success");
-				console.log('response: ' + response);
+				console.log("data:" + data + "; status: " + status);
 			},
-			error:  function(xhr, str){
-				alert('Возникла ошибка: ' + xhr.responseCode);
-				console.log('response: ' + xhr);
+			error:  function(jqXHR, exception){
+				alert('Возникла ошибка: ' + jqXHR);
+				console.log("jqXHR:" + jqXHR + "; exception: " + exception);
 			}
-		}).done(function() {
-			alert("Спасибо за заявку!");
-			setTimeout(function() {
-				$.fancybox.close();
-			}, 1000);
 		});
-		return false;
+		e.preventDefault();
 	});
 
 });
